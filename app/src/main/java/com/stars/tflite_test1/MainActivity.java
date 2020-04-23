@@ -56,59 +56,20 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // for siamfcpp
-//        int net_input_sz_1 = 127;
-//        int net_input_sz_2 = 303;
-//        Log.e("1111","input");
-//        ByteBuffer inputData1;
-//        inputData1 = ByteBuffer.allocateDirect(net_input_sz_1 * net_input_sz_1 * 3 * 4);//4表示一个浮点占4byte
-//        inputData1.order(ByteOrder.nativeOrder());
-//        inputData1.rewind();
-//        for(int i=0; i<net_input_sz_1 * net_input_sz_1 * 3; i++){
-//            inputData1.putFloat(1.0f);
-//        }
-//
-//        ByteBuffer inputData2;
-//        inputData2 = ByteBuffer.allocateDirect(net_input_sz_2 * net_input_sz_2 * 3 * 4);//4表示一个浮点占4byte
-//        inputData2.order(ByteOrder.nativeOrder());
-//        inputData2.rewind();
-//        for(int i=0; i<net_input_sz_2 * net_input_sz_2 * 3; i++){
-//            inputData2.putFloat(1.0f);
-//        }
-//        Object[] inputArray = {inputData1, inputData2};
-
         int net_input_sz = 6;
         Log.e("1111","input");
         ByteBuffer inputData1;
-        inputData1 = ByteBuffer.allocateDirect(net_input_sz * net_input_sz * 4);//4表示一个浮点占4byte
+        inputData1 = ByteBuffer.allocateDirect(net_input_sz * net_input_sz * 4);
         inputData1.order(ByteOrder.nativeOrder());
         inputData1.rewind();
         for(int i=0; i<net_input_sz * net_input_sz; i++){
             inputData1.putFloat(1.0f);
         }
-//        ByteBuffer inputData2;
-//        inputData2 = ByteBuffer.allocateDirect(net_input_sz * net_input_sz * 4);//4表示一个浮点占4byte
-//        inputData2.order(ByteOrder.nativeOrder());
-//        inputData2.rewind();
-//        for(int i=0; i<net_input_sz * net_input_sz; i++){
-//            inputData2.putFloat(1.0f);
-//        }
+
         Object[] inputArray = {inputData1};
 
         Log.e("1111","finish input");
 
-
-        // for siamfcpp
-//        float[][][][] output1;
-//        float[][][][] output2;
-//        float[][][][] output3;
-//        output1 = new float[1][19][19][1];
-//        output2 = new float[1][19][19][1];
-//        output3 = new float[1][19][19][4];
-//        Map<Integer, Object> outputMap = new HashMap<>();
-//        outputMap.put(0, output1);
-//        outputMap.put(1, output2);
-//        outputMap.put(2, output3);
         for(int i=0; i<10; i++){
             float[][][][] output1;
             float[][][][] output2;
@@ -118,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             outputMap.put(0, output1);
             outputMap.put(1, output2);
             Log.e("1111","start");
-            tfLite.runForMultipleInputsOutputs(inputArray, outputMap);  // 即便是单输入也可以使用这个函数
+            tfLite.runForMultipleInputsOutputs(inputArray, outputMap);
             Log.e("1111","output1:" + output1[0][5][0][30]);
             Log.e("1111","output2:" + output2[0][0][5][11]);
         }
